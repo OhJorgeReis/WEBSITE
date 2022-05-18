@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Mattone-150";
+  src: url("/fonts/Mattone-150.woff") format("woff");
+}
+
+@font-face {
+  font-family: "compagnon";
+  src: url("/fonts/Compagnon-Medium.woff") format("woff");
+}
+
+* {
+  margin: 10;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-left: 40px;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  flex: 1;
+  text-align: left;
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 40px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-family: "compagnon";
+}
+
+.grid-container {
+  display: grid;
+  gap: 50px 50px;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 100px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 200px;
+  padding-right: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-family: compagnon;
+}
