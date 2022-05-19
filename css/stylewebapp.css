@@ -6,10 +6,10 @@ body {
   width: 100%;
 }
 
-video {
+/* video {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-}
+} */
 
 #camera,
 #camera--view,
@@ -23,7 +23,6 @@ video {
 #camera--view,
 #camera--sensor,
 #camera--output {
-  transform: scaleX(-1);
   filter: FlipH;
 }
 #camera--trigger {
