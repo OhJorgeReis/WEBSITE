@@ -49,11 +49,16 @@ body {
   right: 20px;
   z-index: 2;
 }
-#img {
+
+#scale-element {
+  display: block;
   position: absolute;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
+  max-width: 100%;
+  margin: 1rem auto;
+  touch-action: none;
   max-height: 100vh;
+}
+
+#scale-element.reset {
+  transition: transform 0.3s ease-in-out;
 }
