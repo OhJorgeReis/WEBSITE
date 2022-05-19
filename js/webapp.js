@@ -1,7 +1,15 @@
 var constraints = {
   video: { facingMode: "environment" },
-  width: { ideal: 1936 },
-  height: { ideal: 2592 },
+  width: {
+    min: 1280,
+    ideal: 1920,
+    max: 2560,
+  },
+  height: {
+    min: 720,
+    ideal: 1080,
+    max: 1440,
+  },
   audio: false,
 };
 
