@@ -1,14 +1,8 @@
 var constraints = {
-  video: { facingMode: "environment" },
-  width: {
-    min: 1920,
-    ideal: 1920,
-    max: 2560,
-  },
-  height: {
-    min: 1080,
-    ideal: 1080,
-    max: 1440,
+  video: {
+    facingMode: "environment",
+    width: { ideal: 3840 },
+    height: { ideal: 2160 },
   },
   audio: false,
 };
@@ -19,6 +13,17 @@ const cameraView = document.querySelector("#camera--view"),
   cameraTrigger = document.querySelector("#camera--trigger");
 
 function cameraStart() {
+  navigator.mediaDevices
+    .enumerateDevices()
+    .then(function (devices) {
+      devices.forEach(function (device) {
+        console.log(device);
+      });
+    })
+    .catch(function (err) {
+      console.log(err.name + ": " + err.message);
+    });
+
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then(function (stream) {
