@@ -16,6 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: nope;
 }
 
 .content-primary {
@@ -100,4 +101,135 @@ body {
 
 input[type="checkbox"] {
   display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: "Lato", sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 10;
+  position: relative;
+  overflow: hidden;
+}
+.overlay img {
+  position: absolute;
+  height: 10vh;
+  right: 50%;
+  bottom: 0;
+}
+
+.info {
+  width: 30%;
+  padding: 2em;
+  color: black;
+  position: absolute;
+  top: 40%;
+  left: 12%;
+  transform: translate(-40%, -50%);
+  z-index: 20;
+  text-decoration: none;
+}
+
+.info h1 {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.info h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+.info p {
+  line-height: 24px;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 1140px) {
+  .info {
+    width: 55%;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .info {
+    width: 85%;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+  }
+  .overlay:hover img {
+    filter: blur(5px) saturate(0.35);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .info {
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+  }
+  .overlay img {
+    filter: blur(0px) saturate(0.45);
+    transition: 0.3s ease-in;
+  }
+  .overlay:hover img {
+    filter: blur(5px) saturate(0.35);
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .info {
+    width: 98%;
+    height: auto;
+    top: 50%;
+    left: 10%;
+    transform: translate(-10%, -50%);
+  }
+  .info h1 {
+    font-size: 3rem;
+  }
+  .info h4 {
+    font-size: 1rem;
+  }
+  .info p {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .overlay img {
+    filter: blur(0px);
+    transition: 0.3s ease-in;
+  }
+  .overlay:hover img {
+    filter: blur(5px) saturate(0.35);
+  }
+  .overlay:hover .info p {
+    opacity: 1;
+  }
 }
