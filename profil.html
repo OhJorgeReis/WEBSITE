@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="css/styleprofile.css" />
+    <title>Alter.i.o</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
+  
   <body>
 
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+       <ul>
+          <li><a href="profil.html">Profiles</a></li>
+          <li><a href="#">Accounts</a></li>
+          <li><a href="webappselection.html">Web App</a></li>
+       </ul>
+    </div>
 
+    <h2 class="heading oh"><span class="oh__inner"><strong>Alter</strong>.i.o</span></h2>
+			
         <div class="item-grid">
           <div class="item">
             <div class="item-img">
@@ -24,7 +35,7 @@
 
           <div class="item">
             <div class="item-img">
-              <a href="clara.html">
+              <a href="webappselection.html">
               <img src="profiles/CARLA.png" alt="" />
             </a>
               <div class="item-action">
@@ -636,20 +647,5 @@
       </div>
     </div>
 
-    <script>
-      let view = document.querySelectorAll(".view");
-      let buy = document.querySelectorAll(".buy");
-      let wishlist = document.querySelectorAll(".wishlist");
-
-      setContent(view, "View");
-      setContent(buy, "Add to Cart");
-      setContent(wishlist, "Save Item");
-
-      function setContent(list, text) {
-        list.forEach((listItem) => {
-          listItem.setAttribute("data-before", text);
-        });
-      }
-    </script>
   </body>
 </html>

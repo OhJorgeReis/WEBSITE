@@ -39,6 +39,30 @@ body {
   bottom: 30px;
   left: calc(50% - 100px);
 }
+
+/* #camera--share {
+  display: none;
+} */
+
+#show-camera--share {
+  display: block;
+}
+
+#camera--share {
+  width: 200px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 90px;
+  left: calc(50% - 100px);
+}
+
 .taken {
   height: 100px !important;
   width: 100px !important;
@@ -57,6 +81,7 @@ body {
   margin: 1rem auto;
   touch-action: none;
   max-height: 100vh;
+  margin-top: 180px;
 }
 
 #scale-element.reset {

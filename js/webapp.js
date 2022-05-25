@@ -10,7 +10,8 @@ var constraints = {
 const cameraView = document.querySelector("#camera--view"),
   cameraOutput = document.querySelector("#camera--output"),
   cameraSensor = document.querySelector("#camera--sensor"),
-  cameraTrigger = document.querySelector("#camera--trigger");
+  cameraTrigger = document.querySelector("#camera--trigger"),
+  cameraShare = document.querySelector("#camera--share");
 
 function cameraStart() {
   navigator.mediaDevices
@@ -41,7 +42,28 @@ cameraTrigger.onclick = function () {
   cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
   cameraOutput.src = cameraSensor.toDataURL("image/webp");
   cameraOutput.classList.add("taken");
+  cameraOutput.classList.add("show-camera--share");
+  cameraOutput.classList.add("camera--share");
 };
+
+cameraShare.addEventListener("click", () => {
+  shareImage();
+});
+
+async function shareImage() {
+  const response = await fetch(cameraSensor.toDataURL("image/webp"));
+  const blob = await response.blob();
+  const filesArray = [
+    new File([blob], "Karla.jpg", {
+      type: "image/webp",
+      lastModified: new Date().getTime(),
+    }),
+  ];
+  const shareData = {
+    files: filesArray,
+  };
+  navigator.share(shareData);
+}
 
 window.addEventListener("load", cameraStart, false);
 
