@@ -14,17 +14,16 @@
     <link rel="stylesheet" href="css/stylewebapp.css" />
   </head>
   <body>
-    <main id="camera">
-      <canvas id="camera--sensor"></canvas>
-      <video id="camera--view" autoplay playsinline></video>
-      <img src="//:0" alt="" id="camera--output" />
-      <div id="gesture-area">
-        <img src="stickers/pose3.png" alt="sample image" id="scale-element" />
-      </div>
-      <button id="camera--trigger">Take a picture</button>
-
-      <button id="camera--share">Share your picture</button>
+    <!-- BEM -->
+    <main id="camera-app" class="cam">
+      <canvas class="cam__canvas"></canvas>
+      <!-- <div id="gesture-area">
+        <img src="stickers/pose3.png" alt="sample image" class="scale-element" />
+      </div> -->
+      <button class="cam__triggerBtn">Take a picture</button>
+      <button class="cam__shareBtn" hidden>Share your picture</button>
+      <img class="cam__takenPreview" hidden />
     </main>
-    <script src="js/webapp.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
