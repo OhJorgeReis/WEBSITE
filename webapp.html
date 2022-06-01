@@ -9,6 +9,11 @@
 
     <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
 
+    <script src="https://unpkg.com/konva@8.3.5/konva.min.js"></script>
+    <!-- emulate touches on desktop -->
+    <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+    <!-- 3-rd party library for gesture events -->
+
     <title>Web App</title>
 
     <link rel="stylesheet" href="css/stylewebapp.css" />
@@ -17,14 +22,10 @@
     <!-- BEM -->
     <main id="camera-app" class="cam">
       <canvas class="cam__canvas"></canvas>
-      <div id="gesture-area">
-        <img
-          src="stickers/pose3.png"
-          alt="sample image"
-          class="scale-element"
-        />
       </div>
-
+      <!-- <div id="gesture-area">
+        <img src="stickers/pose3.png" alt="sample image" class="scale-element" />
+      </div> -->
       <button class="cam__triggerBtn">Take a picture</button>
       <button class="cam__shareBtn" hidden>Share your picture</button>
       <img class="cam__takenPreview" hidden />
