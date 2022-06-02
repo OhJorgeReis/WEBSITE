@@ -1,3 +1,13 @@
+window.addEventListener("load", function () {
+  setTimeout(function open(event) {
+    document.querySelector(".popup").style.display = "block";
+  }, 65000);
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+  document.querySelector(".popup").style.display = "none";
+});
+
 class Sticker {
   constructor({ x, y, image, stage, layer }) {
     // const layer = new Konva.Layer();
