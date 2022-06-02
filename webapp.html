@@ -14,7 +14,7 @@
     <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
     <!-- 3-rd party library for gesture events -->
 
-    
+    <script src="js/hammer-konva.js"></script>
 
     <title>Web App</title>
 
@@ -22,10 +22,9 @@
   </head>
   <body>
     <!-- BEM -->
-    <div id="container"></div>
+
     <main id="camera-app" class="cam">
-      <canvas class="cam__canvas"></canvas>
-      </div>
+      <div class="cam__canvas"></div>
       <!-- <div id="gesture-area">
         <img src="stickers/pose3.png" alt="sample image" class="scale-element" />
       </div> -->
@@ -33,6 +32,9 @@
       <button class="cam__shareBtn" hidden>Share your picture</button>
       <img class="cam__takenPreview" hidden />
     </main>
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/konva-sticker.js"></script>
+    <script src="js/konva-webcam.js"></script>
+    <script src="js/konva-test.js"></script>
   </body>
 </html>
