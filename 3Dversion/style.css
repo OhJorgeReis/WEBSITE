@@ -1,4 +1,97 @@
-body{
-  padding: 0;
+html,
+body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+} */
+
+.cam,
+.cam__canvas,
+#camera--view,
+#camera--output {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+#camera--view,
+#camera--sensor,
+#camera--output {
+  filter: FlipH;
+}
+.cam__triggerBtn {
+  width: 200px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% - 100px);
+  z-index: 0;
+}
+
+/* #camera--share {
+  display: none;
+} */
+
+/* #show-camera--share {
+  display: block;
+} */
+
+.cam__shareBtn {
+  width: 200px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 90px;
+  left: calc(50% - 100px);
+}
+
+[hidden] {
+  display: none;
+}
+
+.cam__takenPreview {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  transition: all 0.5s ease-in;
+  border: solid 3px white;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+#scale-element {
+  display: block;
+  position: absolute;
+  max-width: 100%;
+  margin: 1rem auto;
+  touch-action: none;
+  max-height: 100vh;
+  margin-top: 180px;
+}
+
+#scale-element.reset {
+  transition: transform 0.3s ease-in-out;
 }

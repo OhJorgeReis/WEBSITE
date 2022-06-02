@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>3Dversion</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+
+    <script src="https://unpkg.com/konva@8.3.5/konva.min.js"></script>
+    <!-- emulate touches on desktop -->
+    <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+    <!-- 3-rd party library for gesture events -->
+
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <!-- partial:index.partial.html -->
 
+    <div id="container"></div>
+    <main id="camera-app" class="cam">
+      <canvas class="cam__canvas"></canvas>
+      </div>
+      <!-- <div id="gesture-area">
+        <img src="stickers/pose3.png" alt="sample image" class="scale-element" />
+      </div> -->
+      <button class="cam__triggerBtn">Take a picture</button>
+      <button class="cam__shareBtn" hidden>Share your picture</button>
+      <img class="cam__takenPreview" hidden />
+    </main>
     <!-- partial -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2666677/OrbitControls.js"></script>

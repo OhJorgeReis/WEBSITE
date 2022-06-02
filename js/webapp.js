@@ -1,130 +1,199 @@
-var constraints = {
-  video: {
-    facingMode: "environment",
-    width: { ideal: 3840 },
-    height: { ideal: 2160 },
-  },
-  audio: false,
-};
-
-const cameraView = document.querySelector("#camera--view"),
-  cameraOutput = document.querySelector("#camera--output"),
-  canvas = document.querySelector("#camera--sensor"),
-  cameraTrigger = document.querySelector("#camera--trigger"),
-  cameraShare = document.querySelector("#camera--share");
-
-function cameraStart() {
-  navigator.mediaDevices
-    .enumerateDevices()
-    .then(function (devices) {
-      devices.forEach(function (device) {
-        console.log(device);
-      });
-    })
-    .catch(function (err) {
-      console.log(err.name + ": " + err.message);
-    });
-
-  navigator.mediaDevices
-    .getUserMedia(constraints)
-    .then(function (stream) {
-      track = stream.getTracks()[0];
-      cameraView.srcObject = stream;
-    })
-    .catch(function (error) {
-      console.error("Oops. Something is broken.", error);
-    });
-}
-// Prends la pic
-cameraTrigger.onclick = function () {
-  canvas.width = cameraView.videoWidth;
-  canvas.height = cameraView.videoHeight;
-  canvas.getContext("2d").drawImage(cameraView, 0, 0);
-  cameraOutput.src = canvas.toDataURL("image/webp");
-  cameraOutput.classList.add("taken");
-  cameraOutput.classList.add("show-camera--share");
-  cameraOutput.classList.add("camera--share");
-};
-
-cameraShare.addEventListener("click", () => {
-  shareImage();
+window.addEventListener("load", () => {
+  const cam = new CameraView();
+  cam.init({
+    stickers: ["stickers/pose3.png"],
+    container: document.querySelector("#camera-app"),
+  });
 });
 
-async function shareImage() {
-  const response = await fetch(canvas.toDataURL("image/webp"));
-  const blob = await response.blob();
-  const filesArray = [
-    new File([blob], "Karla.jpg", {
-      type: "image/webp",
-      lastModified: new Date().getTime(),
-    }),
-  ];
-  const shareData = {
-    files: filesArray,
-  };
-  navigator.share(shareData);
+class CameraView {
+  constructor() {}
+
+  async init({ container, stickers }) {
+    this.dom = {
+      takenPreview: container.querySelector(".cam__takenPreview"),
+      triggerBtn: container.querySelector(".cam__triggerBtn"),
+      shareBtn: container.querySelector(".cam__shareBtn"),
+    };
+
+    this.stickers = {};
+    this.shownStickers = [];
+
+    this.dom.triggerBtn.onclick = () => this.takePicture();
+    this.dom.shareBtn.onclick = () => this.shareImage("image.png");
+    // this.dom.shareBtn.onclick = this.shareImage.bind(this);
+
+    this.cameraView = await this.enableCam();
+
+    for (let path of stickers) {
+      await this.preloadSticker(path);
+    }
+
+    this.shownStickers.push(stickers[0]);
+
+    this.container = container;
+    this.canvas = container.querySelector(".cam__canvas");
+    this.ctx = this.canvas.getContext("2d");
+
+    this.initInteraction();
+
+    this.canvas.width = this.cameraView.videoWidth;
+    this.canvas.height = this.cameraView.videoHeight;
+
+    this.updateView();
+  }
+
+  initInteraction() {
+    interact(this.canvas)
+      .gesturable({
+        listeners: {
+          start(event) {
+            // angleScale.angle -= event.angle;
+            // clearTimeout(resetTimeout);
+            // scaleElement.classList.remove("reset");
+          },
+          move(event) {
+            console.log(event);
+            // // document.body.appendChild(new Text(event.scale))
+            // var currentAngle = event.angle + angleScale.angle;
+            // var currentScale = event.scale * angleScale.scale;
+            // scaleElement.style.transform =
+            //   "rotate(" + currentAngle + "deg)" + "scale(" + currentScale + ")";
+            // function dragMoveListener(event) {
+            //   var target = event.target;
+            //   // keep the dragged position in the data-x/data-y attributes
+            //   var x =
+            //     (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+            //   var y =
+            //     (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+            //   // translate the element
+            //   target.style.transform = "translate(" + x + "px, " + y + "px)";
+            //   // update the posiion attributes
+            //   target.setAttribute("data-x", x);
+            //   target.setAttribute("data-y", y);
+            // }
+            // uses the dragMoveListener from the draggable demo above
+            // dragMoveListener(event);
+          },
+          end(event) {
+            // angleScale.angle = angleScale.angle + event.angle;
+            // angleScale.scale = angleScale.scale * event.scale;
+            // resetTimeout = setTimeout(reset, 1000);
+            // scaleElement.classList.add("reset");
+          },
+        },
+      })
+      .draggable({
+        listeners: {
+          move: (event) => {
+            console.log(event);
+          },
+        },
+      });
+
+    function reset() {
+      scaleElement.style.transform = "scale(1)";
+
+      angleScale.angle = 0;
+      angleScale.scale = 1;
+    }
+  }
+
+  preloadSticker(path) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        this.stickers[path] = img;
+        resolve(img);
+      };
+      img.src = path;
+    });
+  }
+
+  async shareImage(name) {
+    // const response = await fetch(canvas.toDataURL("image/png"));
+    this.canvas.toBlob((blob) => {
+      const files = [
+        new File([blob], name, {
+          type: "image/png",
+          lastModified: new Date().getTime(),
+        }),
+      ];
+
+      const shareData = {
+        files,
+      };
+      navigator.share(shareData);
+    }, "image/png");
+  }
+
+  takePicture() {
+    const { takenPreview, shareBtn } = this.dom;
+    takenPreview.src = this.canvas.toDataURL("image/png");
+    showElement(takenPreview);
+    showElement(shareBtn);
+  }
+
+  updateView() {
+    this.ctx.drawImage(this.cameraView, 0, 0);
+
+    this.shownStickers.forEach((stickerName) => {
+      this.ctx.drawImage(this.stickers[stickerName], 0, 0);
+    });
+
+    requestAnimationFrame(this.updateView.bind(this));
+  }
+
+  getAllCameras() {
+    navigator.mediaDevices
+      .enumerateDevices()
+      .then(function (devices) {
+        devices.forEach(function (device) {
+          console.log(device);
+        });
+      })
+      .catch(function (err) {
+        console.log(err.name + ": " + err.message);
+      });
+  }
+
+  enableCam() {
+    // <video id="camera--view" autoplay playsinline></video>
+
+    const cameraView = document.createElement("video");
+    cameraView.autoplay = true;
+    cameraView.setAttribute("playsinline", null);
+
+    return new Promise((resolve) => {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: {
+            facingMode: "environment",
+            width: { ideal: 3840 },
+            height: { ideal: 2160 },
+          },
+          audio: false,
+        })
+        .then((stream) => {
+          const track = stream.getTracks()[0];
+          cameraView.srcObject = stream;
+
+          // wait till webcam is init
+          cameraView.oncanplay = () => {
+            resolve(cameraView);
+          };
+        })
+        .catch((error) => {
+          console.error("Oops. Something is broken.", error);
+        });
+    });
+  }
 }
 
-window.addEventListener("load", cameraStart, false);
+function showElement(elem) {
+  elem.removeAttribute("hidden");
+}
 
-var angleScale = {
-  angle: 0,
-  scale: 1,
-};
-var gestureArea = document.getElementById("gesture-area");
-var scaleElement = document.getElementById("scale-element");
-var resetTimeout;
-
-interact(gestureArea)
-  .gesturable({
-    listeners: {
-      start(event) {
-        angleScale.angle -= event.angle;
-
-        clearTimeout(resetTimeout);
-        scaleElement.classList.remove("reset");
-      },
-      move(event) {
-        // document.body.appendChild(new Text(event.scale))
-        var currentAngle = event.angle + angleScale.angle;
-        var currentScale = event.scale * angleScale.scale;
-
-        scaleElement.style.transform =
-          "rotate(" + currentAngle + "deg)" + "scale(" + currentScale + ")";
-
-        function dragMoveListener(event) {
-          var target = event.target;
-          // keep the dragged position in the data-x/data-y attributes
-          var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-          var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-          // translate the element
-          target.style.transform = "translate(" + x + "px, " + y + "px)";
-
-          // update the posiion attributes
-          target.setAttribute("data-x", x);
-          target.setAttribute("data-y", y);
-        }
-
-        // uses the dragMoveListener from the draggable demo above
-        dragMoveListener(event);
-      },
-      end(event) {
-        angleScale.angle = angleScale.angle + event.angle;
-        angleScale.scale = angleScale.scale * event.scale;
-
-        resetTimeout = setTimeout(reset, 1000);
-        scaleElement.classList.add("reset");
-      },
-    },
-  })
-  .draggable({
-    listeners: { move: dragMoveListener },
-  });
-
-function reset() {
-  scaleElement.style.transform = "scale(1)";
-
-  angleScale.angle = 0;
-  angleScale.scale = 1;
+function hideElement(elem) {
+  elem.setAttribute("hidden", "true");
 }
