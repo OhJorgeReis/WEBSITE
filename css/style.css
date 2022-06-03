@@ -275,3 +275,54 @@ canvas {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* archétypes stuff */
+.container {
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  top: 200px;
+  margin-top: 200px;
+  width: 414px;
+  height: 825px;
+}
+
+.header {
+  margin: 50px 10px;
+  opacity: 1;
+  font-size: 25px;
+}
+
+.pills {
+  list-style: none;
+  margin: 50px 0 0px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pill {
+  padding: 15px 40px;
+  text-align: center;
+  background-color: #000;
+  border-radius: 20px;
+  font-size: 30px;
+  color: white;
+}
+
+.containerimages {
+  column-count: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 0 0 30px, green;
+}
+
+.containerimages img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  padding: 0px;
+  box-sizing: border-box;
+}
