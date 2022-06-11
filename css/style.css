@@ -298,69 +298,50 @@ canvas {
 }
 
 /* archétypes stuff */
-.container {
-  overflow: hidden;
-  position: relative;
-  margin: auto;
-  top: 200px;
-  margin-top: 200px;
-  width: 414px;
-  height: 825px;
+.post {
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
-.header {
-  margin: 50px 10px;
-  opacity: 1;
-  font-size: 25px;
-}
-
-.pills {
-  list-style: none;
-  margin: 50px 0 0px;
-  padding: 0;
+.post__header {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
   display: flex;
-  justify-content: space-between;
+  padding: 10px 10px;
 }
 
-.pill {
-  padding: 15px 40px;
-  text-align: center;
-  background-color: #000;
-  border-radius: 20px;
-  font-size: 30px;
-  color: white;
+.post__header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
-.containerimages {
-  column-count: 2;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-  box-shadow: 0 0 30px, green;
+.post__user {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 40px;
 }
 
-.containerimages2 {
-  column-count: 3;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-  box-shadow: 0 0 30px, green;
+.post__content {
+  max-width: 100%;
+  max-height: auto;
+  overflow: hidden;
 }
 
-.containerimages img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 10px;
-  padding: 0px;
-  box-sizing: border-box;
+.post__content img {
+  max-width: 100%;
+  max-height: auto;
 }
 
-.containerimages2 img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 10px;
-  padding: 0px;
-  box-sizing: border-box;
+.post__text {
+  font-size: 40px;
+  padding: 5px 10px;
+}
+
+.username {
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 5px;
 }
