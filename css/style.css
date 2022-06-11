@@ -345,3 +345,37 @@ canvas {
   display: inline-block;
   margin-right: 5px;
 }
+
+/* end of archetypes shit */
+
+/* start of profiles */
+
+.text_archetype {
+  margin: 3rem;
+  margin-right: 100px;
+}
+
+.profile_name {
+  font-size: 100px;
+  margin: 3rem;
+}
+
+.profile_image {
+  display: block;
+  margin: 0rem;
+  max-width: 100%;
+  max-height: auto;
+  padding-right: 0rem;
+}
+
+.profile_slider {
+  overflow: hidden;
+}
+
+.profile_slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  animation: 2s profile_slider infinite;
+}
