@@ -34,7 +34,8 @@ body {
 .go_back {
   text-decoration: none;
   color: #000;
-  margin-left: 1rem;
+  margin-left: 2rem;
+  font-size: 4rem;
 }
 
 .heading_selection a {

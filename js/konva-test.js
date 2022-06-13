@@ -13,6 +13,7 @@ async function init() {
   dom.konva = container.querySelector(".cam__canvas");
   dom.infoafter = container.querySelector(".info_after");
   dom.infobefore = container.querySelector(".info_before");
+  dom.goback = container.querySelector(".heading_selection");
 
   dom.triggerBtn.onclick = () => takePicture();
   dom.shareBtn.onclick = () => shareImage("image.png");
