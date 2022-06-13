@@ -10,9 +10,8 @@
     <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
 
     <script src="https://unpkg.com/konva@8.3.5/konva.min.js"></script>
-    <!-- emulate touches on desktop -->
+
     <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
-    <!-- 3-rd party library for gesture events -->
 
     <script src="js/hammer-konva.js"></script>
 
@@ -21,9 +20,7 @@
     <link rel="stylesheet" href="css/stylewebapp.css" />
   </head>
   <body>
-    <!-- BEM -->
-
-    <div class="popup">
+    <!-- <div class="popup">
       <h2>Bring Patricia to life !</h2>
       <p>
         You now have the control. You can rotate, pinch to zoom or move patricia
@@ -31,7 +28,7 @@
         A PICTURE, the option to share it will then be available to you.
       </p>
       <a class="close">Let's do it.</a>
-    </div>
+    </div> -->
 
     <main id="camera-app" class="cam">
       <div class="cam__canvas"></div>
@@ -40,9 +37,14 @@
       </div> -->
       <button class="cam__triggerBtn">Take a picture</button>
       <button class="cam__shareBtn" hidden>Share your picture</button>
+      <p class="info_after" hidden>
+        A caption has been copied to your clipboard.
+      </p>
+      <p class="info_before">Outside, Nature, sunny</p>
+
       <img class="cam__takenPreview" hidden />
     </main>
-    <!-- <script src="js/main.js"></script> -->
+
     <script src="js/konva-sticker.js"></script>
     <script src="js/konva-webcam.js"></script>
     <script src="js/konva-test.js"></script>

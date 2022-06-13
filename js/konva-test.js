@@ -11,6 +11,8 @@ async function init() {
   dom.triggerBtn = container.querySelector(".cam__triggerBtn");
   dom.shareBtn = container.querySelector(".cam__shareBtn");
   dom.konva = container.querySelector(".cam__canvas");
+  dom.infoafter = container.querySelector(".info_after");
+  dom.infobefore = container.querySelector(".info_before");
 
   dom.triggerBtn.onclick = () => takePicture();
   dom.shareBtn.onclick = () => shareImage("image.png");
@@ -57,14 +59,15 @@ async function init() {
   });
 
   function takePicture() {
-    const { takenPreview, shareBtn } = dom;
+    const { takenPreview, shareBtn, infoafter, infobefore } = dom;
     takenPreview.src = canvas.toDataURL("image/png");
     showElement(takenPreview);
     showElement(shareBtn);
+    showElement(infoafter);
+    hideElement(infobefore);
   }
 
   async function shareImage(name) {
-    // const response = await fetch(canvas.toDataURL("image/png"));
     canvas.toBlob((blob) => {
       const files = [
         new File([blob], name, {
