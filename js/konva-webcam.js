@@ -4,7 +4,7 @@ class KonvaWebcam {
 
     const cameraView = document.createElement("video");
     cameraView.autoplay = true;
-    cameraView.setAttribute("playsinline", null);
+    cameraView.setAttribute("playsinline", true);
     this.cameraView = cameraView;
 
     this.konvaCam = new Konva.Image({
@@ -63,8 +63,8 @@ class KonvaWebcam {
         .getUserMedia({
           video: {
             facingMode: "environment",
-            width: { ideal: 3840 },
-            height: { ideal: 2160 },
+            width: { ideal: 3840 / 2 },
+            height: { ideal: 2160 / 2 },
           },
           audio: false,
         })

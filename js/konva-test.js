@@ -2,6 +2,8 @@ const params = new URLSearchParams(window.location.search);
 const images = {};
 const layers = {};
 const dom = {};
+let imageBlob;
+let mode3D = false;
 
 async function init() {
   TouchEmulator();
@@ -18,7 +20,7 @@ async function init() {
   dom.triggerBtn.onclick = () => takePicture();
   dom.shareBtn.onclick = () => shareImage("image.png");
 
-  images.pose1 = await loadImg(`/stickers/${params.get("sticker")}.png`);
+  mode3D = params.has("model");
 
   console.log("images preloaded");
 
@@ -50,42 +52,63 @@ async function init() {
   });
 
   await webcamElem.activate();
+
+  if (mode3D) {
+    //
+    // const model = await KonvaModel3D.loadModel(
+    //   `/models/${params.get("model")}.gltf`
+    // );
+
+    new KonvaModel3D({
+      model: undefined,
+      x: stage.width() / 2,
+      y: stage.height() / 2,
+      stage,
+      layer,
+    });
+  } else {
+    images.pose1 = await loadImg(`/stickers/${params.get("sticker")}.png`);
+
+    new Sticker({
+      x: stage.width() / 2,
+      y: stage.height() / 2,
+      image: images.pose1,
+      stage,
+      layer,
+    });
+  }
+
   // add sticker
-  new Sticker({
-    x: stage.width() / 2,
-    y: stage.height() / 2,
-    image: images.pose1,
-    stage,
-    layer,
-  });
 
   function takePicture() {
     const { takenPreview, shareBtn, infoafter, infobefore } = dom;
-    takenPreview.src = canvas.toDataURL("image/png");
-    showElement(takenPreview);
-    showElement(shareBtn);
-    showElement(infoafter);
-    hideElement(infobefore);
+    canvas.toBlob((blob) => {
+      imageBlob = blob;
+      const objectURL = URL.createObjectURL(blob);
+      takenPreview.src = objectURL;
+      showElement(takenPreview);
+      showElement(shareBtn);
+      showElement(infoafter);
+      hideElement(infobefore);
+    }, "image/png");
   }
 
   async function shareImage(name) {
-    canvas.toBlob((blob) => {
-      const files = [
-        new File([blob], name, {
-          type: "image/png",
-          lastModified: new Date().getTime(),
-        }),
-      ];
+    // canvas.toBlob((blob) => {
+    const files = [
+      new File([imageBlob], name, {
+        type: "image/png",
+        lastModified: new Date().getTime(),
+      }),
+    ];
 
-      const shareData = {
-        files,
-      };
-      navigator.share(shareData);
-    }, "image/png");
+    const shareData = {
+      files,
+    };
+    navigator.share(shareData);
+    // }, "image/png");
   }
 }
-
-window.addEventListener("load", (e) => init());
 
 function loadImg(src) {
   return new Promise((resolve) => {
@@ -102,3 +125,5 @@ function showElement(elem) {
 function hideElement(elem) {
   elem.setAttribute("hidden", "true");
 }
+
+window.addEventListener("load", (e) => init());
