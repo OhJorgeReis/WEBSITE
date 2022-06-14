@@ -15,29 +15,72 @@ class KonvaModel3D {
       y,
       scaleX: 1,
       scaleY: 1,
-      draggable: true,
+      draggable: false,
       rotation: 0,
     };
 
     let group = new Konva.Group(originalAttrs);
     layer.add(group);
 
-    let size = 200;
-
-    const image = {
-      width: 100,
-      height: 150,
-    };
-
-    const ratio = image.height / image.width;
     const imgWidth = stage.width();
-    const imgHeight = ratio * imgWidth;
-
+    const imgHeight = stage.height();
     const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+    canvas.width = imgWidth;
+    canvas.height = imgHeight;
 
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // scene setup
+    this.scene = new THREE.Scene();
+    this.scene.background = null;
+
+    // camera setup
+    this.camera = new THREE.PerspectiveCamera(
+      75,
+      imgWidth / imgHeight,
+      0.1,
+      1000
+    );
+    this.camera.position.set(0, 1, 3);
+
+    // renderer setup
+    this.renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setClearColor(0xffffff, 0);
+
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
+
+    const { container } = stage.attrs;
+
+    const controls = new THREE.OrbitControls(this.camera, container);
+    controls.target.set(0, 0.8, 0);
+    controls.update();
+    // console.log(container);
+    // model setup
+    // this.model.add(model);
+    const object3D = new THREE.Object3D();
+    object3D.add(model.scene.children[0]);
+    this.scene.add(object3D);
+    this.scene.add(model.scene);
+
+    // light setup
+    const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.8);
+    this.scene.add(ambient);
+
+    const light = new THREE.DirectionalLight(0xffffff, 0.7);
+    light.position.set(-1, 10, 6);
+
+    light.castShadow = true;
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+    light.shadow.near = 1;
+    light.shadow.far = 100;
+    const shadowSize = 5;
+    light.shadow.left = -shadowSize;
+    light.shadow.right = shadowSize;
+    light.shadow.top = shadowSize;
+    light.shadow.bottom = -shadowSize;
+
+    this.scene.add(light);
 
     const konvaImage = new Konva.Image({
       x: -imgWidth / 2,
@@ -50,82 +93,28 @@ class KonvaModel3D {
     group.add(konvaImage);
 
     let posX = 0;
-    ctx.fillStyle = "black";
 
     this.anim = new Konva.Animation((frame) => {
       //   console.log("hello");
+      this.renderer.render(this.scene, this.camera);
     });
 
     this.anim.start();
 
-    // attach modified version of Hammer.js
-    // "domEvents" property will allow triggering events on group
-    // instead of "hammertime" instance
-    let hammertime = new Hammer(group, { domEvents: true });
-
-    // add rotate gesture
-    hammertime.get("rotate").set({ enable: true });
-
-    // now attach all possible events
-    group.on("swipe", (ev) => {
-      //   text.text("swiping");
-      //   group.to({
-      //     x: group.x() + ev.evt.gesture.deltaX,
-      //     y: group.y() + ev.evt.gesture.deltaY,
-      //     onFinish: () => {
-      //       //   group.to(Object.assign({}, originalAttrs));
-      //       text.text(defaultText);
-      //     },
-      //   });
-    });
-
-    group.on("touchstart", (ev) => {
-      // text.text("Under press");
-      //   rect.to({
-      //     fill: "green",
-      //   });
-    });
-
-    group.on("touchend", (ev) => {
-      //   rect.to({
-      //     fill: "yellow",
-      //   });
-
-      setTimeout(() => {
-        // text.text(defaultText);
-      }, 300);
-    });
-
-    group.on("dragend", () => {
-      //   group.to(Object.assign({}, originalAttrs));
-    });
-
-    let oldRotation = 0;
-    let startScale = 0;
-    group.on("rotatestart", (ev) => {
-      oldRotation = ev.evt.gesture.rotation;
-      startScale = rect.scaleX();
-      group.stopDrag();
-      group.draggable(false);
-      // text.text("rotating...");
-    });
-
-    group.on("rotate", (ev) => {
-      let delta = oldRotation - ev.evt.gesture.rotation;
-      group.rotate(-delta);
-      oldRotation = ev.evt.gesture.rotation;
-      group.scaleX(startScale * ev.evt.gesture.scale);
-      group.scaleY(startScale * ev.evt.gesture.scale);
-    });
-
-    group.on("rotateend rotatecancel", (ev) => {
-      //   group.to(Object.assign({}, originalAttrs));
-      // text.text(defaultText);
-      group.draggable(true);
-    });
-
     stage.add(layer);
 
     this.layer = layer;
+  }
+
+  static loadModel(path) {
+    const loader = new THREE.GLTFLoader();
+
+    return new Promise((resolve) => {
+      //   loader.setPath(assetPath);
+      loader.load(path, (object) => {
+        resolve(object);
+      });
+    });
+    //Load meshes here
   }
 }

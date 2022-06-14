@@ -21,7 +21,7 @@ class KonvaWebcam {
     }, layer);
 
     cameraView.addEventListener("loadedmetadata", (e) => {
-      console.log("trigger");
+      // console.log("trigger");
       const { videoHeight, videoWidth } = cameraView;
       const stageWidth = stage.width();
       const stageHeight = stage.height();
@@ -45,7 +45,7 @@ class KonvaWebcam {
         scaleX: mirror,
       });
 
-      console.log(this.konvaCam);
+      // console.log(this.konvaCam);
 
       this.konvaCam.height(height);
       this.konvaCam.width(width);

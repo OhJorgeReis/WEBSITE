@@ -22,8 +22,6 @@ async function init() {
 
   mode3D = params.has("model");
 
-  console.log("images preloaded");
-
   Konva.hitOnDragEnabled = true;
   Konva.captureTouchEventsEnabled = true;
   // resize
@@ -37,7 +35,6 @@ async function init() {
     width: konvaElem.offsetWidth,
     height: konvaElem.offsetHeight,
   });
-  console.log(stage);
 
   const layer = new Konva.Layer();
   stage.add(layer);
@@ -55,18 +52,22 @@ async function init() {
 
   if (mode3D) {
     //
-    // const model = await KonvaModel3D.loadModel(
-    //   `/models/${params.get("model")}.gltf`
-    // );
+
+    // /webapp.html?model=test
+    const model = await KonvaModel3D.loadModel(
+      `/models/${params.get("model")}.gltf`
+    );
+    // console.log(model);
 
     new KonvaModel3D({
-      model: undefined,
+      model,
       x: stage.width() / 2,
       y: stage.height() / 2,
       stage,
       layer,
     });
   } else {
+    // /webapp.html?sticker=pose3
     images.pose1 = await loadImg(`/stickers/${params.get("sticker")}.png`);
 
     new Sticker({
