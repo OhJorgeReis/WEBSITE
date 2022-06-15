@@ -15,7 +15,7 @@ class KonvaModel3D {
       y,
       scaleX: 1,
       scaleY: 1,
-      draggable: false,
+      draggable: true,
       rotation: 0,
     };
 
@@ -31,6 +31,9 @@ class KonvaModel3D {
     // scene setup
     this.scene = new THREE.Scene();
     this.scene.background = null;
+
+    const gui = new dat.GUI();
+    console.log("gui");
 
     // camera setup
     this.camera = new THREE.PerspectiveCamera(
@@ -66,13 +69,25 @@ class KonvaModel3D {
     this.scene.add(object3D);
     this.scene.add(model.scene);
 
+    class ColorGUIHelper {
+      constructor(object, prop) {
+        this.object = object;
+        this.prop = prop;
+      }
+      get value() {
+        return `#${this.object[this.prop].getHexString()}`;
+      }
+      set value(hexString) {
+        this.object[this.prop].set(hexString);
+      }
+    }
+
     // light setup
     const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.8);
     this.scene.add(ambient);
 
     const light = new THREE.DirectionalLight(0xffffff, 0.7);
     light.position.set(-1, 10, 6);
-
     light.castShadow = true;
     light.shadow.mapSize.width = 1024;
     light.shadow.mapSize.height = 1024;
@@ -83,8 +98,18 @@ class KonvaModel3D {
     light.shadow.right = shadowSize;
     light.shadow.top = shadowSize;
     light.shadow.bottom = -shadowSize;
-
+    light.intensity = 1;
+    light.skyColor = 0xb1e1ff; // light blue
+    light.groundColor = 0xb97a20; // brownish orange
     this.scene.add(light);
+
+    let folderLight = gui.addFolder("Scene lights");
+    folderLight.closed = false;
+    folderLight.add(light.position, "x", -50, 50, 2).name("Light direction");
+    folderLight.add(light, "intensity", 0, 2, 0.01).name("Light intensity");
+    folderLight
+      .addColor(new ColorGUIHelper(light, "color"), "value")
+      .name("skyColor");
 
     const konvaImage = new Konva.Image({
       x: -imgWidth / 2,

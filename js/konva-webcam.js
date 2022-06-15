@@ -9,7 +9,7 @@ class KonvaWebcam {
 
     this.konvaCam = new Konva.Image({
       image: cameraView,
-      draggable: true,
+      draggable: false,
       x: 0,
       y: 0,
     });
