@@ -42,7 +42,11 @@ class KonvaModel3D {
     this.camera.position.set(0, 1, 3);
 
     // renderer setup
-    this.renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    this.renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+    });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setClearColor(0xffffff, 0);
 
