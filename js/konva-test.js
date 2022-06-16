@@ -68,7 +68,7 @@ async function init() {
     });
   } else {
     // /webapp.html?sticker=pose3
-    images.pose1 = await loadImg(`/stickers/${params.get("stickers")}.png`);
+    images.pose1 = await loadImg(`./stickers/${params.get("stickers")}.png`);
 
     new Sticker({
       x: stage.width() / 2,
