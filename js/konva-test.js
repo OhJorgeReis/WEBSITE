@@ -55,7 +55,7 @@ async function init() {
 
     // /webapp.html?model=test
     const model = await KonvaModel3D.loadModel(
-      `/models/${params.get("model")}.gltf`
+      `./models/${params.get("model")}.gltf`
     );
     // console.log(model);
 
