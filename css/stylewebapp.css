@@ -6,11 +6,6 @@ body {
   width: 100%;
 }
 
-/* video {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-} */
-
 .cam,
 .cam__canvas,
 #camera--view,
@@ -26,18 +21,15 @@ body {
   filter: FlipH;
 }
 .cam__triggerBtn {
-  width: 200px;
   background-color: black;
-  color: white;
-  font-size: 16px;
-  border-radius: 30px;
+  border-radius: 70%;
   border: none;
-  padding: 15px 20px;
-  text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 5px;
   position: fixed;
   bottom: 30px;
-  left: calc(50% - 100px);
+  left: calc(50% - 40px);
+  height: 70px;
+  width: 70px;
 }
 
 /* #camera--share {
@@ -49,18 +41,15 @@ body {
 } */
 
 .cam__shareBtn {
-  width: 200px;
   background-color: black;
-  color: white;
-  font-size: 16px;
-  border-radius: 30px;
+  border-radius: 70%;
   border: none;
-  padding: 15px 20px;
-  text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 5px;
   position: fixed;
-  bottom: 90px;
-  left: calc(50% - 100px);
+  bottom: 350px;
+  left: calc(72%);
+  height: 70px;
+  width: 70px;
 }
 
 .info_after {
@@ -68,30 +57,31 @@ body {
   margin: 20px 0;
   z-index: 999;
   width: 70px;
-  color: white;
-  font-size: 11px;
+  color: rgb(0, 0, 0);
+  font-size: 9px;
   border-radius: 30px;
   border: none;
   padding: 15px 20px;
   text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: aliceblue;
   position: fixed;
-  bottom: 580px;
+  bottom: 410px;
   margin-left: 10rem;
   left: calc(50% - 100px);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif;
 }
 
 .info_before {
-  width: 160px;
+  width: 150px;
   color: rgb(0, 0, 0);
   font-size: 14px;
   border-radius: 30px;
   border: none;
   padding: 10px 20px;
   text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: aliceblue;
   position: fixed;
-  bottom: 70px;
   left: calc(50% - 100px);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif;
@@ -140,21 +130,19 @@ body {
     sans-serif;
   margin-top: 22px;
   font-size: 26px;
-
   position: fixed;
-
   z-index: 999;
 }
 
 .info_before {
-  width: 160px;
+  width: 90px;
   color: rgb(0, 0, 0);
-  font-size: 14px;
-  border-radius: 30px;
+  font-size: 9px;
   border: none;
+  left: 10px;
+  bottom: 20px;
   padding: 10px 20px;
-  text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 
 .go_back {
