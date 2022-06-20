@@ -1,7 +1,7 @@
 body {
   --margin: 3rem;
   --color-text: #111;
-  --color-bg: #f7f5f3;
+  --color-bg: white;
   --color-link: #999;
   --color-link-hover: #000;
   --font-size-xlarge: 2rem;
@@ -54,6 +54,8 @@ body {
   margin: 3rem;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
+  padding: 10%;
 }
 
 .heading {
