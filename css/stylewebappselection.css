@@ -59,7 +59,7 @@ a {
 }
 
 .container {
-  width: 100%;
+  max-width: 1000px;
   height: 80vh;
   background-color: #f7f5f3;
   display: flex;
