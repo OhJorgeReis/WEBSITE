@@ -533,7 +533,6 @@ img {
 .grid-item {
   position: relative;
   text-align: center;
-  border: solid black 1px;
   border-radius: 2px;
 }
 
