@@ -636,3 +636,13 @@ a {
   border-radius: 10px; /* Rounded corners */
   font-size: 40px; /* Increase font size */
 }
+
+.bg {
+  z-index: -1;
+  background-image: url(/profiles/BRUNOBACKGROUND2.png);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
