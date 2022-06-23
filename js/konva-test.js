@@ -1,4 +1,5 @@
 const params = new URLSearchParams(window.location.search);
+const query = window.location.search;
 const images = {};
 const layers = {};
 const dom = {};
@@ -79,7 +80,15 @@ async function init() {
     });
   }
 
-  // add sticker
+  // YOOOOOOOOO
+  if (query.includes("BRUNOPOSE1")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "ok"
+      );
+  }
 
   function takePicture() {
     const { takenPreview, shareBtn, infoafter, infobefore } = dom;
