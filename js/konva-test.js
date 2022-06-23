@@ -86,7 +86,223 @@ async function init() {
     for (var i = 0; i < elements.length; ++i)
       elements[i].textContent = elements[i].textContent.replace(
         "Outside, Nature, sunny, everywhere in nature would look great",
-        "ok"
+        "Outside or inside, in an environment that seems professional like an office."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE2")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Somewhere where movement happens, looks even better if you can capture more people."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE3")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Against an object outside, good for showing a more calm side of Bruno."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE4")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "In front of an impressive building, or in a good looking street."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE5")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "In any place where waiting is necessary. Show's Bruno's bossy side."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE6")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Inside, in a great looking building, or in an office looking place."
+      );
+  }
+
+  if (query.includes("BRUNOPOSE7")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Outside, in a place that looks more relaxed than the usual office environment."
+      );
+  }
+
+  if (query.includes("PAULPOSE2")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Outside, in front of a good looking natural landscape, like a lake."
+      );
+  }
+
+  if (query.includes("PAULPOSE3")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Perfect for a trek shot. Positon Paul in a road in nature on a sunny day."
+      );
+  }
+
+  if (query.includes("PAULPOSE4")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Natural environment will look better but a street in a city can work too."
+      );
+  }
+
+  if (query.includes("PAULPOSE5")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "At the gym, or in a outside gym. Around other workout machines."
+      );
+  }
+
+  if (query.includes("PAULPOSE6")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Perfect for group shots, position Bruno outside with your friends."
+      );
+  }
+
+  if (query.includes("PAULPOSE7")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "In a natural landscape, good for stories posting and a laid-back vibe."
+      );
+  }
+
+  if (query.includes("PAULPOSE8")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Works good on a workout mat, or on the beach, after workout shot."
+      );
+  }
+
+  if (query.includes("PAULPOSE9")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Workout shot, works inside in a gym or outside on a sports field."
+      );
+  }
+
+  if (query.includes("PAULPOSE10")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "After workout shot, works inside in a gym or outside on a sports field."
+      );
+  }
+
+  if (query.includes("PATRICIA2")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Perfect for outdoors shot, near a lake or a water point."
+      );
+  }
+
+  if (query.includes("PATRICIA3")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Works great inside, against a solid colored wall. Perfect on a workout mat."
+      );
+  }
+
+  if (query.includes("PATRICIA8")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Outside, nature, sunny, in a flat terrain without a lot of elements."
+      );
+  }
+
+  if (query.includes("PATRICIA9")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Any romantic landscape outside, around nature."
+      );
+  }
+
+  if (query.includes("PATRICIA4")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Any romantic landscape outside, around nature."
+      );
+  }
+
+  if (query.includes("PATRICIA5")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Outside around nature or inside with a yoga mat on the floor."
+      );
+  }
+
+  if (query.includes("PATRICIA6")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Outside around nature or inside with a yoga mat on the floor."
+      );
+  }
+
+  if (query.includes("PATRICIA7")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Works great outside in front of an impressive landscape like a mountain."
+      );
+  }
+
+  if (query.includes("POSE4")) {
+    var elements = document.getElementsByClassName("info_before");
+    for (var i = 0; i < elements.length; ++i)
+      elements[i].textContent = elements[i].textContent.replace(
+        "Outside, Nature, sunny, everywhere in nature would look great",
+        "Its perfect for shots in front of large mountains or the sea."
       );
   }
 
