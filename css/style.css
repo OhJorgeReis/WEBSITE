@@ -656,3 +656,13 @@ a {
   background-size: cover;
   background-position: center;
 }
+
+.bg3 {
+  z-index: -1;
+  background-image: url(/profiles/BACKGROUND.png);
+  height: 107vh;
+  width: 140vw;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+}
