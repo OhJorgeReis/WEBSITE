@@ -639,7 +639,7 @@ a {
 
 .bg {
   z-index: -1;
-  background-image: url(/profiles/BRUNO/BACKGROUND3.png);
+  background-image: url(./profiles/BRUNO/BACKGROUND3.png);
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -649,7 +649,7 @@ a {
 
 .bg2 {
   z-index: -1;
-  background-image: url(/profiles/PAUL/BACKGROUND2.png);
+  background-image: url(./profiles/PAUL/BACKGROUND2.png);
   height: 107vh;
   width: 140vw;
   position: fixed;
@@ -659,7 +659,7 @@ a {
 
 .bg3 {
   z-index: -1;
-  background-image: url(/profiles/PAUL/PAULBACKGROUND.png);
+  background-image: url(./profiles/PAUL/PAULBACKGROUND.png);
   height: 107vh;
   width: 140vw;
   position: fixed;
