@@ -660,8 +660,8 @@ a {
 .bg3 {
   z-index: -1;
   background-image: url(./profiles/PAUL/PAULBACKGROUND.png);
-  height: 107vh;
-  width: 140vw;
+  height: 120vh;
+  width: 138vw;
   position: fixed;
   background-size: cover;
   background-position: center;
